@@ -26,7 +26,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies":[
+              "highcharts/highcharts-more",
+              "highcharts",
+              "highcharts/modules/boost",
+              "highcharts/modules/no-data-to-display"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FrontTesis"
+    }
+  },
+  "defaultProject": "FrontTesis",
+  "cli": {
+    "analytics": "2dc21562-8a31-43c0-b493-cc7ea81a80d3"
+  }
 }
