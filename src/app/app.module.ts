@@ -5,14 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChartComponent } from './components/chart/chart.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { VoltageComponent } from './components/voltage/voltage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChartComponent,
     NavbarComponent,
     VoltageComponent
   ],
