@@ -59,9 +59,7 @@ export class VoltageComponent implements OnInit {
         faseB.series[1].addPoint([date,parseFloat( data[item]['BFVRMS'])],false, shift);
         faseC.series[0].addPoint([date,parseFloat( data[item]['CVRMS'])],false, shift);
         faseC.series[1].addPoint([date,parseFloat( data[item]['CFVRMS'])],false, shift);
-        thdA.series[0].addPoint([date,parseFloat( data[item]['AVTHD'])*100],false, shift);
-        thdB.series[0].addPoint([date,parseFloat( data[item]['BVTHD'])*100],false, shift);
-        thdC.series[0].addPoint([date,parseFloat( data[item]['CVTHD'])*100],false, shift);
+        
         if (item === '49') {
           faseA.series[2].addPoint([date,parseFloat( data[item]['AVHRMS_CAL'])],true, shift);
           faseB.series[2].addPoint([date,parseFloat( data[item]['BVHRMS_CAL'])],true, shift);
@@ -73,8 +71,23 @@ export class VoltageComponent implements OnInit {
           faseA.series[2].addPoint([date,parseFloat( data[item]['AVHRMS_CAL'])],false, shift);
           faseB.series[2].addPoint([date,parseFloat( data[item]['BVHRMS_CAL'])],false, shift);
           faseC.series[2].addPoint([date,parseFloat( data[item]['CVHRMS_CAL'])],false, shift);
+          thdA.series[0].addPoint([date,parseFloat( data[item]['AVTHD'])*100],false, shift);
+          thdB.series[0].addPoint([date,parseFloat( data[item]['BVTHD'])*100],false, shift);
+          thdC.series[0].addPoint([date,parseFloat( data[item]['CVTHD'])*100],false, shift);
         }
       }
+        faseA.series[0].length = 0;
+        faseA.series[1].length = 0;
+        faseA.series[2].length = 0;
+        faseB.series[0].length = 0;
+        faseB.series[1].length = 0;
+        faseB.series[2].length = 0;
+        faseC.series[0].length = 0;
+        faseC.series[1].length = 0;
+        faseC.series[2].length = 0;
+        thdA.series[0].length = 0;
+        thdB.series[0].length = 0;
+        thdC.series[0].length = 0;
     });
   }
 
@@ -142,7 +155,7 @@ export class VoltageComponent implements OnInit {
         text: ''
       },
       subtitle: {
-        text: 'THD'
+        text: ''
       },
       yAxis: {
         title: {
@@ -151,7 +164,7 @@ export class VoltageComponent implements OnInit {
       },
       xAxis: {
         title: {
-          text: 'tiempo'
+          text: 'Tiempo'
         },
         type: 'datetime',
       },
