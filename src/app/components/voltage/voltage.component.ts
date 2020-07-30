@@ -4,7 +4,6 @@ import { RegistersService } from '../../services/registers.service';
 import { Chart } from '../../models/chartModel';
 
 import * as Highcharts from 'highcharts';
-import { NONE_TYPE } from '@angular/compiler';
 let inter: any;
 let faseA: any;
 let faseB: any;
