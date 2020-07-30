@@ -101,7 +101,7 @@ export class CurrentComponent implements OnInit {
       },
       yAxis: {
         title: {
-            text: 'Voltaje'
+            text: 'Corriente'
         }
       },
       xAxis: {
@@ -124,12 +124,12 @@ export class CurrentComponent implements OnInit {
       },
       series: [
         {
-          name : 'V rms'
+          name : 'I rms'
         },
         {
-          name: 'V1 rms'
+          name: 'I1 rms'
         },{
-          name: 'VH rms'
+          name: 'IH rms'
         }
     ],
   
