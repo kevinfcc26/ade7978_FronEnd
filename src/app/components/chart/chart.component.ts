@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistersService } from '../../services/registers.service';
 
-
 import * as Highcharts from 'highcharts';
-import { ParsedVariable } from '@angular/compiler';
 
 declare var require: any;
-let Boost = require('highcharts/modules/boost');
-let noData = require('highcharts/modules/no-data-to-display');
-let More = require('highcharts/highcharts-more');
+// let Boost = require('highcharts/modules/boost');
+// let noData = require('highcharts/modules/no-data-to-display');
+// let More = require('highcharts/highcharts-more');
+let chart1: any;
+let inter: any;
 
-Boost(Highcharts);
-noData(Highcharts);
-More(Highcharts);
-noData(Highcharts);
+// Boost(Highcharts);
+// noData(Highcharts);
+// More(Highcharts);
+// noData(Highcharts);
 
 @Component({
   selector: 'app-chart',
@@ -21,59 +21,52 @@ noData(Highcharts);
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-  title = 'my new chart';
-  valuesx = [];
-  valuesy = [];
-  name: string = 'AIRSM';
-
   constructor(private registers: RegistersService) {}
 
   public options: any = {
     title: {
-      text: 'Voltaje'
+      text: 'Fase A'
     },
-
+    // loading: {
+    //   hideDuration: 0,
+    //   showDuration: 0
+    // },
     subtitle: {
-      text: 'ADE7978'
+      text: 'Linea A'
     },
-
     yAxis: {
       title: {
           text: 'Voltaje'
       }
     },
-
     xAxis: {
-      type: 'datetime',
-      categories: this.valuesx
+      title: {
+        text: 'tiempo'
+      },
+      type: 'datetime'
     },
-
     legend: {
       layout: 'vertical',
       align: 'right',
       verticalAlign: 'middle'
     },
-
     plotOptions: {
       series: {
           label: {
-              connectorAllowed: false
+              connectorAllowed: true
           }
       }
     },
-
     series: [{
-      name: this.name,
-      data: this.valuesy
+      name: 'AVRMS'
     },
     {
-      name: this.name,
-      data: this.valuesy
+      name: 'AFVRMS'
     },
     {
-      name: this.name,
-      data: this.valuesy
-    }],
+      name: 'AVHRMS'
+    }
+    ],
 
     responsive: {
       rules: [{
@@ -90,28 +83,35 @@ export class ChartComponent implements OnInit {
       }]
     }
   }
-
   ngOnInit(): void {
+    chart1 = Highcharts.chart('fase A', this.options);
     this.getRegister();
-    setInterval(() => {
+   inter = setInterval(() => {
       this.getRegister();
-    }, 5000);
+    }, 10000);
+  }
+  ngOnDestroy(): void {
+    clearInterval(inter);
   }
 
 
-  getRegister(){
-    this.registers.getRegisters().subscribe( ( data: any ) => {
+  async getRegister(){
+    await this.registers.getRegistersVol().subscribe( ( data: any ) => {
+      console.log(data);
       for ( let item in data ){
-        this.valuesy.push(parseFloat(data[item]['AIRMS']));
-        this.valuesx.push(new Date(data[item]['DATETIME']));
+          const series = chart1.series[0],
+            shift = series.data.length > 20;
+          chart1.series[0].addPoint(parseFloat( data[item]['AVRMS']),false, shift);
+          chart1.series[1].addPoint(parseFloat( data[item]['AFVRMS']),false, shift);
+
+          if (item === '49') {
+            chart1.series[2].addPoint(parseFloat( data[item]['AVHRMS_CAL']),true, shift);
+          } else {
+            chart1.series[2].addPoint(parseFloat( data[item]['AVHRMS_CAL']),false, shift);
+          }
       }
-      Highcharts.chart('VA', this.options);
-      Highcharts.chart('VB', this.options);
-      Highcharts.chart('VC', this.options);
-      this.valuesy.length = 0;
-      this.valuesx.length = 0;
-      console.log('done!');
+      console.log(chart1);
+      
     });
   }
-
 }
