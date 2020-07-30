@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { VoltageComponent } from './components/voltage/voltage.component';
+import { CurrentComponent } from './components/current/current.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    VoltageComponent
+    VoltageComponent,
+    CurrentComponent
   ],
   imports: [
     BrowserModule,
