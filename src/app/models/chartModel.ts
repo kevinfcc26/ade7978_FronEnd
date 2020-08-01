@@ -3,18 +3,20 @@ export class Chart {
     subtitle: string;
     datetime: Date[];
     series: series[];
+    yAxis: string;
     constructor() {
         this.title = '';
         this.subtitle = '';
         this.datetime = [];
-        this.series = [new series(), new series(), new series()]
+        this.series = [];
     }
 }
 
-class series {
+export class series {
     name: string;
     data: Number[];
-    constructor() {
+    constructor(name: string) {
+        this.name = name;
         this.data = [];
     };
 }

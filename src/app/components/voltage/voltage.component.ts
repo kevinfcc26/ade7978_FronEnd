@@ -48,11 +48,10 @@ export class VoltageComponent implements OnInit {
   async getRegister(){
     let date;
     await this.registers.getRegistersVol().subscribe(( data: any ) => {
-      console.log(data);
       for ( let item in data ){
         date = new Date(data[item]['DATETIME']);
         const series = faseA.series[0],
-            shift = series.data.length > 20;
+            shift = series.data.length > 1;
         faseA.series[0].addPoint([date,parseFloat( data[item]['AVRMS'])],false, shift);
         faseA.series[1].addPoint([date,parseFloat( data[item]['AFVRMS'])],false, shift);
         faseB.series[0].addPoint([date,parseFloat( data[item]['BVRMS'])],false, shift);

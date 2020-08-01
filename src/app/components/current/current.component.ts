@@ -48,11 +48,10 @@ export class CurrentComponent implements OnInit {
   async getRegister(){
     let date;
     await this.registers.getRegistersCur().subscribe(( data: any ) => {
-      console.log(data);
       for ( let item in data ){
         date = new Date(data[item]['DATETIME']);
         const series = faseA.series[0],
-            shift = series.data.length > 0;
+            shift = series.data.length > 1;
         faseA.series[0].addPoint([date,parseFloat( data[item]['AIRMS'])],false, shift);
         faseA.series[1].addPoint([date,parseFloat( data[item]['AFIRMS'])],false, shift);
         faseB.series[0].addPoint([date,parseFloat( data[item]['BIRMS'])],false, shift);
@@ -76,7 +75,6 @@ export class CurrentComponent implements OnInit {
           thdC.series[0].addPoint([date,parseFloat( data[item]['CITHD'])*100],false, shift);
         }
       }
-      console.log(faseA);
     });
   }
 
