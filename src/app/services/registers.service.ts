@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-
 
 
 @Injectable({
@@ -26,6 +24,9 @@ export class RegistersService {
   }
   getRegistersPowerA(){
     return this.http.get( `${this.url2}/power/a` );
+  }
+  getRegistersPowerB(){
+    return this.http.get( `${this.url2}/power/b` );
   }
 
 }
