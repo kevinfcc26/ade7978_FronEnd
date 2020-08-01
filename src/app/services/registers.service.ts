@@ -28,5 +28,8 @@ export class RegistersService {
   getRegistersPowerB(){
     return this.http.get( `${this.url2}/power/b` );
   }
+  getRegistersPowerC(){
+    return this.http.get( `${this.url2}/power/c` );
+  }
 
 }

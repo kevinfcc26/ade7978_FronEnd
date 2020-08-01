@@ -73,7 +73,7 @@ export class PowerAComponent implements OnInit {
   async getRegister(){
     let date;
     await this.registers.getRegistersPowerA().subscribe(( data: any ) => {
-      console.log(data);
+      // console.log(data);
       for ( let item in data ){
         date = new Date(data[item]['DATETIME']);
         const series = p.series[0],
