@@ -52,7 +52,7 @@ export class CurrentComponent implements OnInit {
       for ( let item in data ){
         date = new Date(data[item]['DATETIME']);
         const series = faseA.series[0],
-            shift = series.data.length > 20;
+            shift = series.data.length > 0;
         faseA.series[0].addPoint([date,parseFloat( data[item]['AIRMS'])],false, shift);
         faseA.series[1].addPoint([date,parseFloat( data[item]['AFIRMS'])],false, shift);
         faseB.series[0].addPoint([date,parseFloat( data[item]['BIRMS'])],false, shift);
@@ -76,18 +76,7 @@ export class CurrentComponent implements OnInit {
           thdC.series[0].addPoint([date,parseFloat( data[item]['CITHD'])*100],false, shift);
         }
       }
-        faseA.series[0].length = 0;
-        faseA.series[1].length = 0;
-        faseA.series[2].length = 0;
-        faseB.series[0].length = 0;
-        faseB.series[1].length = 0;
-        faseB.series[2].length = 0;
-        faseC.series[0].length = 0;
-        faseC.series[1].length = 0;
-        faseC.series[2].length = 0;
-        thdA.series[0].length = 0;
-        thdB.series[0].length = 0;
-        thdC.series[0].length = 0;
+      console.log(faseA);
     });
   }
 

@@ -24,5 +24,8 @@ export class RegistersService {
   getRegistersCur(){
     return this.http.get( `${this.url2}/current` );
   }
+  getRegistersPower(){
+    return this.http.get( `${this.url2}/power` );
+  }
 
 }
