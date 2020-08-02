@@ -31,5 +31,8 @@ export class RegistersService {
   getRegistersPowerC(){
     return this.http.get( `${this.url2}/power/c` );
   }
+  getRegistersPowerTripasic(){
+    return this.http.get( `${this.url2}/power/triphasic` );
+  }
 
 }

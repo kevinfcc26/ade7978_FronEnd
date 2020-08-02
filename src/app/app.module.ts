@@ -11,6 +11,7 @@ import { CurrentComponent } from './components/current/current.component';
 import { PowerAComponent } from './components/power-a/power-a.component';
 import { PowerBComponent } from './components/power-b/power-b.component';
 import { PowerCComponent } from './components/power-c/power-c.component';
+import { TriphasicComponent } from './components/triphasic/triphasic.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { PowerCComponent } from './components/power-c/power-c.component';
     CurrentComponent,
     PowerAComponent,
     PowerBComponent,
-    PowerCComponent
+    PowerCComponent,
+    TriphasicComponent
   ],
   imports: [
     BrowserModule,

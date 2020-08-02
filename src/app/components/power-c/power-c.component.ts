@@ -19,6 +19,7 @@ let n: any;
   styleUrls: ['./power-c.component.css']
 })
 export class PowerCComponent implements OnInit {
+  
   public charts: Chart[] = [new Chart(), new Chart(), new Chart(), new Chart(), new Chart(), new Chart(), new Chart()];
 
   constructor(private registers: RegistersService) {

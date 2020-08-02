@@ -6,6 +6,7 @@ import { CurrentComponent } from './components/current/current.component';
 import { PowerAComponent } from './components/power-a/power-a.component';
 import { PowerBComponent } from './components/power-b/power-b.component';
 import { PowerCComponent } from './components/power-c/power-c.component';
+import { TriphasicComponent } from './components/triphasic/triphasic.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'powerA', component: PowerAComponent},
   { path: 'powerB', component: PowerBComponent},
   { path: 'powerC', component: PowerCComponent},
+  { path: 'triphasic', component: TriphasicComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
